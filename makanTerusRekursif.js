@@ -1,8 +1,6 @@
 function makanTerusRekursif(waktu) {
   if (waktu <= 0 || !waktu) return 0
-  if (waktu !== 0) {
-    return 1 + makanTerusRekursif(waktu - 15)
-  }
+  return 1 + makanTerusRekursif(waktu - 15)
 }
 
 // TEST CASES
