@@ -1,5 +1,12 @@
 function kaliTerusRekursif(angka) {
-  // you can only write your code here!
+  const angkaString = angka.toString()
+  if (angkaString.length === 1) return angkaString
+
+  let initNum = 1
+  for (let i = 0; i < angkaString.length; i++) {
+    initNum *= Number(angkaString[i])
+  }
+  return kaliTerusRekursif(initNum)
 }
 
 // TEST CASES
