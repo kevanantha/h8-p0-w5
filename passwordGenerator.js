@@ -1,5 +1,5 @@
 function changeVocals(str) {
-  const alphabet = 'abcdefghijklmnopqrstuvwxyzaABCDEFGHIJKLMNOPQRSTUVWXYZA'
+  const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
   let changeString = ''
   for (let i = 0; i < str.length; i++) {
     if (
