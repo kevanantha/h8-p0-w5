@@ -1,21 +1,28 @@
 function sorting(arrNumber) {
+  if (!arrNumber.length) return []
+  const result = []
   const sorted = []
-  arrNumber = arrNumber.sort((a, b) => b - a)
+  let largestNum = 0
 
   for (let i = 0; i < arrNumber.length; i++) {
-    if (arrNumber[i] === arrNumber[i + 1]) {
-      sorted.push(arrNumber[i])
-    } else {
-      sorted.push(arrNumber[i])
-      break
+    if (arrNumber[i] > largestNum) {
+      largestNum = arrNumber[i]
     }
   }
-  return sorted
+
+  for (let i = 0; i < arrNumber.length; i++) {
+    if (arrNumber[i] === largestNum) {
+      sorted.push(arrNumber[i])
+    }
+  }
+
+  result.push(largestNum, sorted)
+  return result
 }
 
 function getTotal(arrNumber) {
   if (!arrNumber.length) return ''
-  return `angka paling besar adalah ${arrNumber[0]} dan jumlah kemunculan sebanyak ${arrNumber.length} kali`
+  return `angka paling besar adalah ${arrNumber[0]} dan jumlah kemunculan sebanyak ${arrNumber[1].length} kali`
 }
 
 function mostFrequentLargestNumbers(arrNumber) {
