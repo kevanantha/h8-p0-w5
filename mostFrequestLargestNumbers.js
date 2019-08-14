@@ -1,28 +1,35 @@
 function sorting(arrNumber) {
   if (!arrNumber.length) return []
-  const result = []
-  const sorted = []
-  let largestNum = 0
 
   for (let i = 0; i < arrNumber.length; i++) {
-    if (arrNumber[i] > largestNum) {
-      largestNum = arrNumber[i]
+    if (arrNumber[i + 1] < arrNumber[i]) {
+      const temp = arrNumber[i + 1]
+      arrNumber[i + 1] = arrNumber[i]
+      arrNumber[i] = temp
+      i = -1
     }
   }
 
-  for (let i = 0; i < arrNumber.length; i++) {
-    if (arrNumber[i] === largestNum) {
-      sorted.push(arrNumber[i])
-    }
-  }
-
-  result.push(largestNum, sorted)
-  return result
+  return arrNumber
 }
 
 function getTotal(arrNumber) {
   if (!arrNumber.length) return ''
-  return `angka paling besar adalah ${arrNumber[0]} dan jumlah kemunculan sebanyak ${arrNumber[1].length} kali`
+
+  let largestNumber = 0
+  let mostFrequentNumber = 0
+
+  for (let i = 0; i < arrNumber.length; i++) {
+    if (arrNumber[i] > largestNumber) {
+      largestNumber = arrNumber[i]
+    }
+  }
+
+  for (let i = 0; i < arrNumber.length; i++) {
+    if (arrNumber[i] === largestNumber) mostFrequentNumber++
+  }
+
+  return `angka paling besar adalah ${largestNumber} dan jumlah kemunculan sebanyak ${mostFrequentNumber} kali`
 }
 
 function mostFrequentLargestNumbers(arrNumber) {
