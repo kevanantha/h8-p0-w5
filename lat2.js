@@ -22,6 +22,7 @@ function eMoneySplit(stringData) {
   for (let i = 0; i < stringData.length; i++) {
     splitData.push(stringData[i].split(':'))
   }
+
   splitData = splitData.sort(function(a, b) {
     return a[1] < b[1]
   })
