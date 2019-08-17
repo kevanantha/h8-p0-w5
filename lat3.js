@@ -57,9 +57,7 @@ function warOfFun(informations) {
 
   for (let i = 0; i < arrObj.length; i++) {
     const { fun } = arrObj[i]
-    if (fun > winner.fun) {
-      winner = arrObj[i]
-    }
+    if (fun > winner.fun) winner = arrObj[i]
   }
 
   for (let i = 0; i < arrObj.length; i++) {
