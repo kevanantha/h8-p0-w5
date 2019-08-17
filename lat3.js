@@ -63,9 +63,11 @@ function warOfFun(informations) {
   for (let i = 0; i < arrObj.length; i++) {
     if (arrObj[i].fun === winner.fun) sameFun++
   }
+  console.log({ sameFun, winner })
 
-  if (sameFun === 1) return `pemenangnya adalah ${winner.name}`
+  if (sameFun === 1 && winner.fun > 0) return `pemenangnya adalah ${winner.name}`
   if (sameFun > 1) return 'mohon maaf tidak ada pemenangnya'
+  return 'mohon maaf tidak ada pemenangnya'
 }
 
 console.log(
@@ -94,4 +96,5 @@ console.log(
 )
 
 console.log(warOfFun([['andre', 'toni'], ['risk', 'go'], ['humble', 'strong']])) // mohon maaf tidak ada pemenangnya
+console.log(warOfFun([['andre'], ['risk', 'go'], ['humble', 'strong']])) // mohon maaf tidak ada pemenangnya
 console.log(warOfFun([])) // mohon maaf tidak ada pemenangnya
