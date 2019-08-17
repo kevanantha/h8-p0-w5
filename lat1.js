@@ -3,7 +3,7 @@
 var exercise1 = [
   { name: 'ginta', position: 'BF', ability: 'fat', score: 20 },
   { name: 'hiruma', position: 'DB', ability: 'manipulation', score: 100 },
-  { name: 'eyeshield', position: 'RB', ability: 'topSpeed', score: 80 }
+  { name: 'eyeshield', position: 'RB', ability: 'topSpeed', score: 80 },
 ]
 console.log(exercise1)
 
