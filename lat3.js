@@ -26,10 +26,11 @@ OUTPUT: pemenangnya adalah toni
 */
 function warOfFun(informations) {
   if (!informations.length) return 'mohon maaf tidak ada pemenangnya'
+
   const arrObj = []
   const newArray = []
 
-  for (let i = 0; i < informations.length; i++) {
+  for (let i = 0; i < informations[0].length; i++) {
     const temp = []
     for (let j = 0; j < informations.length; j++) {
       temp.push(informations[j][i])
@@ -42,7 +43,6 @@ function warOfFun(informations) {
       name: '',
       fun: 0
     }
-    if (!newArray[i][0]) break
     player.name = newArray[i][0]
     for (let j = 1; j < newArray[i].length; j++) {
       if (newArray[i][j] === 'fun') {
@@ -51,16 +51,23 @@ function warOfFun(informations) {
     }
     arrObj.push(player)
   }
+
   let winner = arrObj[0]
+  let sameFun = 0
 
   for (let i = 0; i < arrObj.length; i++) {
     const { fun } = arrObj[i]
-    if (fun > winner.fun) winner = arrObj[i]
+    if (fun > winner.fun) {
+      winner = arrObj[i]
+    }
   }
 
-  if (winner.fun) return `pemenangnya adalah ${winner.name}`
+  for (let i = 0; i < arrObj.length; i++) {
+    if (arrObj[i].fun === winner.fun) sameFun++
+  }
 
-  return 'mohon maaf tidak ada pemenangnya'
+  if (sameFun === 1) return `pemenangnya adalah ${winner.name}`
+  if (sameFun > 1) return 'mohon maaf tidak ada pemenangnya'
 }
 
 console.log(
@@ -74,7 +81,19 @@ console.log(
     ['fun', 'fun'],
     ['nonfun', 'fun', 'fun', 'fun']
   ])
+) // pemenangnya adalah toni
+
+console.log(
+  warOfFun([
+    ['gusti', 'kevin', 'ajis', 'fitra', 'dimas', 'armedi', 'isro'],
+    ['fun', 'fun', 'fun', 'fun', 'fun', 'fun'],
+    ['fun', 'fun', 'fun'],
+    ['fun', 'fun'],
+    ['nonfun', 'fun', 'fun', 'fun'],
+    ['nonfun', 'fun', 'fun', 'fun'],
+    ['fun', 'fun', 'fun']
+  ])
 )
-// pemenangnya adalah toni
+
 console.log(warOfFun([['andre', 'toni'], ['risk', 'go'], ['humble', 'strong']])) // mohon maaf tidak ada pemenangnya
 console.log(warOfFun([])) // mohon maaf tidak ada pemenangnya
