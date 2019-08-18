@@ -33,11 +33,8 @@ function lotusRealms(n) {
   for (let i = 0; i < n.length; i++) {
     const { clan, totalHealth } = n[i]
 
-    const obj = {
-      clan,
-      totalHealth
-    }
-    console.log(obj)
+    const obj = { clan, totalHealth }
+
     for (let j = 0; j < n.length; j++) {
       if (obj.clan == n[j].attack) {
         obj.totalHealth -= n[j].totalAttack
