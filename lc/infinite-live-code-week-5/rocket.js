@@ -48,7 +48,34 @@ Asrama peringkat pertama adalah Slyterin dengan nilai rata-rata 57
 */
 
 function rankingAsrama(students) {
-  // Your code here
+  let result = []
+  let asrama = []
+
+  for (let i = 0; i < students.length; i++) {
+    asrama.push(students[i].asrama)
+  }
+  asrama = Array.from(new Set(asrama))
+
+  for (let i = 0; i < asrama.length; i++) {
+    const obj = {
+      asrama: students[i].asrama,
+      nilai: [],
+      rataRata: 0
+    }
+
+    for (let j = 0; j < students.length; j++) {
+      if (obj.asrama == students[j].asrama) {
+        obj.nilai.push(students[j].nilai)
+      }
+    }
+
+    obj.rataRata = Math.round(obj.nilai.reduce((acc, current) => acc + current) / obj.nilai.length)
+    result.push(obj)
+  }
+
+  result = result.sort((a, b) => a.rataRata < b.rataRata)
+
+  return `Asrama peringkat permama adalah ${result[0].asrama} dengan nilai rata-rata ${result[0].rataRata}`
 }
 
 var data = [
@@ -59,7 +86,7 @@ var data = [
   { nama: 'Ginny Weasley', nilai: 10, asrama: 'Griffindor' },
   { nama: 'Gregory Goyle', nilai: 10, asrama: 'Slyterin' },
   { nama: 'Penelope Clearwater', nilai: 10, asrama: 'Ravenclaw' },
-  { nama: 'Tom Marvolo Riddle', nilai: 90, asrama: 'Slyterin' },
-];
+  { nama: 'Tom Marvolo Riddle', nilai: 90, asrama: 'Slyterin' }
+]
 
 console.log(rankingAsrama(data)) // Asrama peringkat pertama adalah Slyterin dengan nilai rata-rata 57
