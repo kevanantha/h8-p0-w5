@@ -19,35 +19,43 @@ Function akan membaca data siswa dari input dan mengubahnya menjadi array of obj
 2. Dilarang menggunakan built-in split
 
 */
+function splitStr(str, operator = '') {
+  if (Array.isArray(str)) return
+  const result = []
+  let temp = ''
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] == operator) {
+      result.push(temp)
+      temp = ''
+    } else {
+      temp += str[i]
+    }
+    if (i == str.length - 1) result.push(temp)
+  }
+  return result
+}
 
 function dataSiswa(scoreRecord) {
   if (!scoreRecord) return 'tidak ada catatan hasil test hari ini'
-  let splitStrComma = []
-  let tempComma = ''
-  let spliStr = []
+
+  const splitStrComma = splitStr(scoreRecord, ',')
+  const multiDArray = []
   const result = []
 
-  for (let i = 0; i < scoreRecord.length; i++) {
-    if (scoreRecord[i] == '-' || scoreRecord[i] == ',') {
-      splitStrComma.push(tempComma)
-      tempComma = ''
-    } else {
-      tempComma += scoreRecord[i]
-    }
-    if (i == scoreRecord.length - 1) splitStrComma.push(tempComma)
+  for (let i = 0; i < splitStrComma.length; i++) {
+    const splitDash = splitStr(splitStrComma[i], '-')
+    multiDArray.push(splitDash)
   }
 
-  for (let i = 0; i < splitStrComma.length; i += 3) {
-    spliStr.push([splitStrComma[i], splitStrComma[i + 1], splitStrComma[i + 2]])
-  }
-
-  for (let i = 0; i < spliStr.length; i++) {
+  for (let i = 0; i < multiDArray.length; i++) {
     const obj = {}
-    obj.id = spliStr[i][0]
-    obj.name = spliStr[i][1]
-    obj.score = spliStr[i][2]
+    obj.id = multiDArray[i][0]
+    obj.name = multiDArray[i][1]
+    obj.score = multiDArray[i][2]
     result.push(obj)
   }
+
   return result
 }
 

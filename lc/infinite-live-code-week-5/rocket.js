@@ -48,34 +48,41 @@ Asrama peringkat pertama adalah Slyterin dengan nilai rata-rata 57
 */
 
 function rankingAsrama(students) {
-  let result = []
-  let asrama = []
+  let perAsrama = {}
 
   for (let i = 0; i < students.length; i++) {
-    asrama.push(students[i].asrama)
-  }
-  asrama = Array.from(new Set(asrama))
-
-  for (let i = 0; i < asrama.length; i++) {
-    const obj = {
-      asrama: students[i].asrama,
-      nilai: [],
-      rataRata: 0
-    }
-
-    for (let j = 0; j < students.length; j++) {
-      if (obj.asrama == students[j].asrama) {
-        obj.nilai.push(students[j].nilai)
+    if (!perAsrama[students[i].asrama]) {
+      perAsrama[students[i].asrama] = {
+        asrama: students[i].asrama,
+        students: [],
+        rataRata: []
       }
     }
-
-    obj.rataRata = Math.round(obj.nilai.reduce((acc, current) => acc + current) / obj.nilai.length)
-    result.push(obj)
+    perAsrama[students[i].asrama].students.push(students[i].nama)
+    perAsrama[students[i].asrama].rataRata.push(students[i].nilai)
   }
 
-  result = result.sort((a, b) => a.rataRata < b.rataRata)
+  const values = Object.values(perAsrama)
 
-  return `Asrama peringkat permama adalah ${result[0].asrama} dengan nilai rata-rata ${result[0].rataRata}`
+  for (let i = 0; i < values.length; i++) {
+    let rata = 0
+    for (let j = 0; j < values[i].rataRata.length; j++) {
+      rata += values[i].rataRata[j]
+    }
+    const rata2 = Math.round(rata / values[i].rataRata.length)
+    values[i].rataRata = rata2
+  }
+
+  for (let i = 0; i < values.length - 1; i) {
+    if (values[i + 1].rataRata > values[i].rataRata) {
+      const temp = values[i + 1]
+      values[i + 1] = values[i]
+      values[i] = temp
+      i = Math.max(0, i - 1)
+    } else i++
+  }
+
+  return values
 }
 
 var data = [
