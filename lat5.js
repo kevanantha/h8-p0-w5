@@ -42,14 +42,14 @@ function smallestNum(arr) {
   return smallestNum
 }
 
-function filter(str) {
+function filter(arr) {
   const result = []
 
-  for (let i = 0; i < str.length; i++) {
-    for (let j = i + 1; j < str.length; j++) {
-      if (str[i] == str[j]) delete str[j]
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] == arr[j]) delete arr[j]
     }
-    if (str[i]) result.push(str[i])
+    if (arr[i]) result.push(arr[i])
   }
 
   return result

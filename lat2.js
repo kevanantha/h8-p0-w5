@@ -31,7 +31,9 @@ function eMoneySplit(stringData) {
     return `terbanyak adalah ${splitData[0][0]} dan terdikit adalah ${splitData[0][0]}`
   }
 
-  return `terbanyak adalah ${splitData[0][0]} dan terdikit adalah ${splitData[splitData.length - 1][0]}`
+  return `terbanyak adalah ${splitData[0][0]} dan terdikit adalah ${
+    splitData[splitData.length - 1][0]
+  }`
 }
 
 console.log(eMoneySplit('bagus:200000,ali:20000,bagas:300000,andre:50000'))

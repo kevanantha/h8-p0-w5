@@ -72,7 +72,6 @@ function groupSort(arr) {
       i = Math.max(0, i - 1)
     } else i++
   }
-  console.log(arr)
 
   for (let i = 0; i < arr.length; i++) {
     if (!result[arr[i].kelas]) {
