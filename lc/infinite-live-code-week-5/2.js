@@ -59,8 +59,6 @@ function dataSiswa(scoreRecord) {
   return result
 }
 
-module.exports = splitStr
-
 console.log(dataSiswa('001-Radith-88,002-Putra-100,003-Levy-83'))
 /* 
 [
