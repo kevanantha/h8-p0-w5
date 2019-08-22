@@ -1,3 +1,18 @@
+function joinFunc(data, operator) {
+  let result = ''
+
+  for (let i = 0; i < data.length; i++) {
+    if (i == data.length - 1) {
+      result += data[i]
+    } else {
+      result += data[i] + operator
+    }
+  }
+  return result
+}
+console.log(joinFunc(['kevin', 'anantha', 'vijaya'], '-'))
+console.log(['kevin', 'anantha', 'vijaya'].join('-'))
+
 /*
 ===========
 eMoneySplit
